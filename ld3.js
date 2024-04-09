@@ -28,6 +28,13 @@ async function pruebaDeFuncionalidadDeEnlacesEnTitulares() {
 
         await driver.sleep(3000);
 
+        try {
+            const closeButton = await driver.findElement(By.className('ld-intertitial-close'));
+            await closeButton.click();
+        } catch (error) {
+            console.log('No se encontró el anuncio');
+        }
+
         const titular = await driver.findElement(By.className('c-article__title'));
         await titular.click();
         await takeScreenshot(driver, path.join(__dirname, 'Prueba 3', 'paso3.png'));
